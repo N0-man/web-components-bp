@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pop-up info box — web components</title>
+    <script src="popup.js" defer></script>
+    <script src="paragraph.js" defer></script>
+    <script src="button.js" defer></script>
+  </head>
+  <body>
+    <!-- Simple Web component -->
+    <h1>Pop-up info widget - web components</h1>
+    <form>
+      <div>
+        <label for="cvc">
+          Enter your CVC 
+          <popup-info 
+            img="img/alt.png" 
+            data-text="Your card validation code (CVC) is an extra security feature — it is the last 3 or 4 numbers on the back of your card."
+          ></popup-info>
+        </label>
+        <input type="text" id="cvc">
+      </div>
+    </form>
+    <h1>Simple template</h1>
+
+    <!-- Templating with stylesheets -->
+    <template id="my-paragraph">
+      <style>
+        p {
+          color: white;
+          background-color: #858585;
+          padding: 5px;
+        }
+      </style>
+      <p><slot name="my-text">My default text</slot></p>
+    </template>
+
+    <my-paragraph>
+      <span slot="my-text">Let's have some different text!</span>
+    </my-paragraph>
+
+    <my-paragraph>
+      <ul slot="my-text">
+        <li>Let's have some different text!</li>
+        <li>In a list!</li>
+      </ul>
+    </my-paragraph>
+
+    <!-- Lifecycle Function -->
+    <wc-button></wc-button>
+  </body>
+</html>
